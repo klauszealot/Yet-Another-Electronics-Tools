@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Power Amplifier &amp; Power Electronics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e5e2e1",
+                        "outline-variant": "#414755",
+                        "on-tertiary": "#571e00",
+                        "secondary-container": "#26467d",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-tint": "#adc6ff",
+                        "on-primary-container": "#00285c",
+                        "on-surface-variant": "#c1c6d7",
+                        "primary-fixed": "#d8e2ff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e5e2e1",
+                        "outline": "#8b90a0",
+                        "primary-container": "#4b8eff",
+                        "on-primary-fixed": "#001a41",
+                        "surface-bright": "#3a3939",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-highest": "#353534",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-secondary-container": "#98b5f3",
+                        "on-secondary-fixed": "#001a41",
+                        "surface": "#131313",
+                        "primary": "#adc6ff",
+                        "background": "#131313",
+                        "secondary": "#adc6ff",
+                        "tertiary-container": "#ef6719",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-on-surface": "#313030",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary": "#ffb595",
+                        "tertiary-fixed": "#ffdbcc",
+                        "inverse-primary": "#005bc1",
+                        "on-primary": "#002e69",
+                        "surface-container": "#201f1f",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-dim": "#131313",
+                        "on-tertiary-container": "#4c1a00",
+                        "primary-fixed-dim": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#26467d",
+                        "surface-container-high": "#2a2a2a",
+                        "on-secondary": "#082f65"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        .liquid-pill {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-container'));
+            position: relative;
+        }
+        .liquid-pill::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: 0 0 15px theme('colors.surface-tint');
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .glass-overlay {
+            background-color: rgba(53, 53, 52, 0.4); /* surface-variant */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Neumorphic Extrusion Default (Raised) */
+        .neumorphic-raised {
+            background-color: theme('colors.surface-container-high');
+            box-shadow: 
+                -2px -2px 4px rgba(229, 226, 225, 0.05), /* on-surface subtle highlight */
+                4px 4px 8px rgba(14, 14, 14, 0.4);       /* surface-container-lowest shadow */
+        }
+
+        /* Neumorphic Pressed (Active) */
+        .neumorphic-pressed {
+            background-color: theme('colors.surface-container-high');
+            box-shadow: inset 2px 2px 4px rgba(14, 14, 14, 0.4), inset -2px -2px 4px rgba(229, 226, 225, 0.05);
+        }
+
+        /* Input Well */
+        .input-well {
+            background-color: theme('colors.surface-container-lowest');
+            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar -->
+<nav class="fixed inset-y-0 left-0 z-50 flex flex-col p-6 h-screen w-64 border-r border-[#2A2A2A]/50 bg-[#131313]/80 backdrop-blur-xl transition-transform md:translate-x-0 -translate-x-full">
+<!-- Header -->
+<div class="mb-10 flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary" data-icon="engineering">engineering</span>
+</div>
+<div>
+<h1 class="text-xl font-bold italic text-[#ADC6FF] tracking-tight">YAET</h1>
+<p class="text-xs text-on-surface-variant">Electronics Tools</p>
+</div>
+</div>
+<!-- Main Nav -->
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Op-Amp</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined" data-icon="speaker_group">speaker_group</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Power Amp</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#ADC6FF] bg-[#2A2A2A] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4),inset_-2px_-2px_4px_rgba(255,255,255,0.05)]" href="#">
+<span class="material-symbols-outlined" data-icon="electric_bolt" style="font-variation-settings: 'FILL' 1;">electric_bolt</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Power Electronics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Semiconductors</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined" data-icon="rebase_edit">rebase_edit</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Transistors</span>
+</a>
+</div>
+<!-- Footer Nav -->
+<div class="mt-auto flex flex-col gap-2 border-t border-surface-container-high pt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] font-medium text-sm tracking-tight">Settings</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 md:left-64 flex justify-between items-center px-8 z-40 bg-[#131313]/40 backdrop-blur-md h-16 transition-all">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="text-2xl font-semibold tracking-tighter text-[#ADC6FF]">Yet Another Electronics Tools</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-primary hover:text-white transition-opacity opacity-80">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+</button>
+<button class="text-gray-500 hover:text-white transition-opacity">
+<span class="material-symbols-outlined" data-icon="print">print</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 mt-16 p-6 lg:p-12 overflow-y-auto">
+<!-- Top Level Readout -->
+<div class="mb-12 flex justify-end">
+<div class="text-right">
+<p class="text-[0.75rem] font-semibold text-primary uppercase tracking-widest mb-1">System Efficiency</p>
+<p class="text-[3.5rem] font-light leading-none tracking-[-0.02em] text-on-background">78.4<span class="text-2xl text-on-surface-variant">%</span></p>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Power Amp Section (Spans 8 cols) -->
+<section class="lg:col-span-8 space-y-8">
+<h2 class="text-[1.5rem] font-headline text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="speaker_group">speaker_group</span>
+                    Amplifier Stages
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Class A Card -->
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-sm font-semibold text-on-surface uppercase tracking-wider mb-1">Class A</h3>
+<p class="text-xs text-on-surface-variant">Single-ended Pout</p>
+</div>
+<span class="px-2 py-1 rounded bg-error-container text-on-error text-[0.65rem] font-bold uppercase tracking-widest">Low Eff</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-[0.75rem] text-outline-variant mb-1 block">Vcc (Volts)</label>
+<input class="w-full input-well text-on-surface border-none rounded-lg px-4 py-2 focus:ring-1 focus:ring-primary focus:outline-none transition-all" type="number" value="12"/>
+</div>
+<div>
+<label class="text-[0.75rem] text-outline-variant mb-1 block">IcQ (Amps)</label>
+<input class="w-full input-well text-on-surface border-none rounded-lg px-4 py-2 focus:ring-1 focus:ring-primary focus:outline-none transition-all" type="number" value="1.5"/>
+</div>
+<div class="pt-4 flex justify-between items-center">
+<p class="text-xs text-on-surface-variant">Max Theoretical: 25%</p>
+<button class="neumorphic-raised text-primary px-4 py-2 rounded-lg text-sm font-medium hover:neumorphic-pressed transition-all duration-200">
+                                    Calculate
+                                </button>
+</div>
+</div>
+</div>
+<!-- Class B/AB Card -->
+<div class="bg-surface-container-low p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary/10 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-sm font-semibold text-on-surface uppercase tracking-wider mb-1">Class B/AB</h3>
+<p class="text-xs text-on-surface-variant">Push-Pull Config</p>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[0.65rem] font-bold uppercase tracking-widest">Mod Eff</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="text-[0.75rem] text-outline-variant mb-1 block">Vcc (Volts)</label>
+<input class="w-full input-well text-on-surface border-none rounded-lg px-4 py-2 focus:ring-1 focus:ring-secondary focus:outline-none transition-all" type="number" value="24"/>
+</div>
+<div>
+<label class="text-[0.75rem] text-outline-variant mb-1 block">RL (Ohms)</label>
+<input class="w-full input-well text-on-surface border-none rounded-lg px-4 py-2 focus:ring-1 focus:ring-secondary focus:outline-none transition-all" type="number" value="8"/>
+</div>
+<div class="pt-4 flex justify-between items-center">
+<p class="text-xs text-on-surface-variant">Max Theoretical: 78.5%</p>
+<button class="neumorphic-raised text-secondary px-4 py-2 rounded-lg text-sm font-medium hover:neumorphic-pressed transition-all duration-200">
+                                    Calculate
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Pout Calculator -->
+<div class="bg-surface-container-low p-8 rounded-xl mt-6">
+<h3 class="text-sm font-semibold text-primary uppercase tracking-wider mb-6 border-b border-surface-container-high pb-2 inline-block">Pout(max) Analysis</h3>
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1 space-y-6 w-full">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Peak Voltage (Vp)</span>
+<span class="text-xl font-light text-on-surface">18.5<span class="text-sm text-outline-variant ml-1">V</span></span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant">Load Current (IL)</span>
+<span class="text-xl font-light text-on-surface">2.3<span class="text-sm text-outline-variant ml-1">A</span></span>
+</div>
+<div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[45%] rounded-full"></div>
+</div>
+</div>
+<div class="w-48 h-48 rounded-full flex items-center justify-center relative flex-shrink-0">
+<!-- Glow effect behind result -->
+<div class="absolute inset-0 bg-primary/10 rounded-full blur-xl"></div>
+<div class="bg-surface-container-high w-36 h-36 rounded-full flex flex-col items-center justify-center z-10 shadow-[inset_2px_2px_4px_rgba(255,255,255,0.05),-4px_-4px_8px_rgba(0,0,0,0.5)]">
+<span class="text-outline-variant text-[0.65rem] uppercase tracking-widest mb-1">Result</span>
+<span class="text-3xl font-light text-primary">21.2</span>
+<span class="text-xs text-on-surface-variant">Watts</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Power Electronics Section (Spans 4 cols) -->
+<aside class="lg:col-span-4 space-y-8">
+<h2 class="text-[1.5rem] font-headline text-on-surface mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="electric_bolt">electric_bolt</span>
+                    Regulation
+                </h2>
+<!-- Zener Diode Design -->
+<div class="bg-surface-container-highest p-6 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] relative">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-outline-variant text-opacity-50" data-icon="design_services">design_services</span>
+</div>
+<h3 class="text-sm font-semibold text-tertiary uppercase tracking-wider mb-4">Zener Shunt</h3>
+<div class="space-y-5">
+<div class="flex gap-4">
+<div class="flex-1">
+<label class="text-[0.65rem] text-outline-variant uppercase mb-1 block">Vin (Min)</label>
+<input class="w-full input-well text-sm text-on-surface border-none rounded p-2 focus:ring-1 focus:ring-tertiary" type="number" value="15"/>
+</div>
+<div class="flex-1">
+<label class="text-[0.65rem] text-outline-variant uppercase mb-1 block">Vin (Max)</label>
+<input class="w-full input-well text-sm text-on-surface border-none rounded p-2 focus:ring-1 focus:ring-tertiary" type="number" value="20"/>
+</div>
+</div>
+<div>
+<label class="text-[0.65rem] text-outline-variant uppercase mb-1 block">Vz (Zener Voltage)</label>
+<div class="flex bg-surface-container-lowest rounded overflow-hidden p-1 gap-1">
+<button class="flex-1 py-1 rounded bg-surface-variant text-on-surface text-xs font-medium">5.1V</button>
+<button class="flex-1 py-1 rounded text-outline-variant text-xs hover:bg-surface-variant/50 transition-colors">9.1V</button>
+<button class="flex-1 py-1 rounded text-outline-variant text-xs hover:bg-surface-variant/50 transition-colors">12V</button>
+</div>
+</div>
+<div class="pt-4 border-t border-surface-variant">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-xs text-on-surface-variant">Rs (min)</span>
+<span class="text-sm font-medium text-tertiary">120 Ω</span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="text-xs text-on-surface-variant">Pz (max)</span>
+<span class="text-sm font-medium text-tertiary">0.5 W</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Line/Load Regulation -->
+<div class="glass-overlay p-6 rounded-xl border border-outline-variant/15">
+<h3 class="text-sm font-semibold text-on-surface uppercase tracking-wider mb-4">Performance Metrics</h3>
+<ul class="space-y-4">
+<li class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">Line Regulation</span>
+<span class="text-[0.65rem] text-outline-variant">ΔVout / ΔVin</span>
+</div>
+<span class="text-sm font-mono text-primary">0.05 %/V</span>
+</li>
+<li class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm text-on-surface">Load Regulation</span>
+<span class="text-[0.65rem] text-outline-variant">ΔVout / ΔIL</span>
+</div>
+<span class="text-sm font-mono text-secondary">0.12 %/mA</span>
+</li>
+</ul>
+<button class="w-full mt-6 liquid-pill text-on-primary-container font-semibold py-3 rounded-lg text-sm tracking-wide transition-transform active:scale-[0.98]">
+                        Generate Report
+                    </button>
+</div>
+</aside>
+</div>
+</main>
+</body></html>

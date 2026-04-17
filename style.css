@@ -1,0 +1,239 @@
+:root {
+    /* Semantic Colors - White Space & Minimalism */
+    --bg-color: #f5f5f7;
+    --sidebar-bg: rgba(255, 255, 255, 0.7);
+    --card-bg: rgba(255, 255, 255, 0.4);
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
+    --accent: #0071e3;
+    --accent-glow: rgba(0, 113, 227, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    
+    /* Neumorphism Shadows */
+    --nm-shadow-light: #ffffff;
+    --nm-shadow-dark: #d1d1d6;
+    
+    /* Transitions */
+    --fluid-motion: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark-mode {
+    --bg-color: #000000;
+    --sidebar-bg: rgba(28, 28, 30, 0.7);
+    --card-bg: rgba(28, 28, 30, 0.4);
+    --text-primary: #f5f5f7;
+    --text-secondary: #86868b;
+    --accent: #0a84ff;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --nm-shadow-light: #2c2c2e;
+    --nm-shadow-dark: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: var(--fluid-motion);
+}
+
+/* Background Animated Blobs for Liquid Feel */
+.background-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    filter: blur(80px);
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: var(--fluid-motion);
+}
+
+.blob-1 { width: 400px; height: 400px; background: #0071e3; top: -100px; right: -100px; }
+.blob-2 { width: 300px; height: 300px; background: #5e5ce6; bottom: -50px; left: -50px; }
+.blob-3 { width: 250px; height: 250px; background: #bf5af2; top: 40%; left: 30%; }
+
+/* Sidebar - Liquid Glass */
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+}
+
+nav ul { list-style: none; }
+nav li {
+    padding: 14px 20px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--fluid-motion);
+    color: var(--text-secondary);
+}
+
+nav li:hover, nav li.active {
+    background: var(--card-bg);
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.theme-toggle { margin-top: auto; }
+#mode-switch {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: var(--fluid-motion);
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 60px 80px;
+    max-width: 1200px;
+}
+
+header { margin-bottom: 40px; }
+header h1 { font-size: 42px; font-weight: 700; letter-spacing: -1.5px; }
+header p { color: var(--text-secondary); margin-top: 10px; }
+
+/* Formula Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Cards - Liquid Glass + Neumorphism */
+.card {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 30px;
+    transition: var(--fluid-motion);
+    box-shadow: 10px 10px 20px var(--nm-shadow-dark), -10px -10px 20px var(--nm-shadow-light);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 15px 30px var(--nm-shadow-dark), -15px -15px 30px var(--nm-shadow-light);
+}
+
+.card h3 { margin-bottom: 10px; font-size: 20px; font-weight: 600; color: var(--accent); }
+
+.equation-box {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    font-size: 1.1em;
+    color: var(--text-primary);
+    overflow-x: auto;
+}
+
+.dark-mode .equation-box {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Customizing KaTeX to look more modern */
+.katex-display { margin: 0 !important; }
+
+/* Inputs - Neumorphic Style */
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-secondary); }
+
+input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: none;
+    background: var(--bg-color);
+    box-shadow: inset 4px 4px 8px var(--nm-shadow-dark), inset -4px -4px 8px var(--nm-shadow-light);
+    color: var(--text-primary);
+    font-size: 16px;
+    transition: var(--fluid-motion);
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 4px var(--nm-shadow-dark), inset -2px -2px 4px var(--nm-shadow-light);
+}
+
+.calc-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px var(--accent-glow);
+    transition: var(--fluid-motion);
+}
+
+.calc-btn:active {
+    transform: scale(0.98);
+}
+
+.result-area {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+    display: none; /* Hidden until calculated */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.result-area.show { display: block; }
+
+.result-val {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.result-label { font-size: 14px; color: var(--text-secondary); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

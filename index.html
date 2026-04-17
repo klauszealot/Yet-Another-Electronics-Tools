@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yet Another Electronics Tools</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- KaTeX for Beautiful Equations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+</head>
+<body class="light-mode">
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <aside class="sidebar">
+        <div class="logo">YAET.</div>
+        <nav>
+            <ul>
+                <li class="active" data-category="opamp">Op-Amp</li>
+                <li data-category="poweramp">Power Amp</li>
+                <li data-category="powerelectronics">Power Electronics</li>
+                <li data-category="semiconductor">Semiconductor</li>
+                <li data-category="transistor">Transistor</li>
+            </ul>
+        </nav>
+        <div class="theme-toggle">
+            <button id="mode-switch">🌙 Dark Mode</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <header>
+            <h1 id="category-title">Op-Amp (Penguat Operasional)</h1>
+            <p>Pilih rumus dan masukkan nilai untuk menghitung hasil secara instan.</p>
+        </header>
+
+        <section id="formula-grid" class="grid">
+            <!-- Cards will be injected by JavaScript -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

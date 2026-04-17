@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yet Another Electronics Tools - Semiconductors &amp; Transistors</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#e5e2e1",
+                      "outline-variant": "#414755",
+                      "on-tertiary": "#571e00",
+                      "secondary-container": "#26467d",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "surface-tint": "#adc6ff",
+                      "on-primary-container": "#00285c",
+                      "on-surface-variant": "#c1c6d7",
+                      "primary-fixed": "#d8e2ff",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e5e2e1",
+                      "outline": "#8b90a0",
+                      "primary-container": "#4b8eff",
+                      "on-primary-fixed": "#001a41",
+                      "surface-bright": "#3a3939",
+                      "tertiary-fixed-dim": "#ffb595",
+                      "on-surface": "#e5e2e1",
+                      "surface-container-highest": "#353534",
+                      "on-tertiary-fixed-variant": "#7c2e00",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-secondary-container": "#98b5f3",
+                      "on-secondary-fixed": "#001a41",
+                      "surface": "#131313",
+                      "primary": "#adc6ff",
+                      "background": "#131313",
+                      "secondary": "#adc6ff",
+                      "tertiary-container": "#ef6719",
+                      "error-container": "#93000a",
+                      "on-tertiary-fixed": "#351000",
+                      "surface-container-low": "#1c1b1b",
+                      "inverse-on-surface": "#313030",
+                      "surface-container-lowest": "#0e0e0e",
+                      "tertiary": "#ffb595",
+                      "tertiary-fixed": "#ffdbcc",
+                      "inverse-primary": "#005bc1",
+                      "on-primary": "#002e69",
+                      "surface-container": "#201f1f",
+                      "surface-variant": "#353534",
+                      "on-primary-fixed-variant": "#004493",
+                      "surface-dim": "#131313",
+                      "on-tertiary-container": "#4c1a00",
+                      "primary-fixed-dim": "#adc6ff",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed-variant": "#26467d",
+                      "surface-container-high": "#2a2a2a",
+                      "on-secondary": "#082f65"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Inter"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass-panel {
+            background-color: theme('colors.surface-container-low');
+            backdrop-filter: blur(20px);
+        }
+
+        .neumorphic-button {
+            background-color: theme('colors.surface-container-high');
+            box-shadow: 2px 2px 4px theme('colors.surface-container-lowest'), 
+                        -1px -1px 2px rgba(255,255,255,0.05);
+            transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .neumorphic-button:active, .neumorphic-button.active {
+            box-shadow: inset 2px 2px 4px theme('colors.surface-container-lowest'), 
+                        inset -2px -2px 4px rgba(255,255,255,0.05);
+        }
+
+        .neumorphic-input {
+            background-color: theme('colors.surface-container-lowest');
+            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.5), 
+                        inset -1px -1px 2px rgba(255,255,255,0.02);
+            border: none;
+            color: theme('colors.primary');
+        }
+        
+        .neumorphic-input:focus {
+            outline: none;
+            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.6), 
+                        inset -1px -1px 2px rgba(255,255,255,0.05),
+                        0 0 10px rgba(173, 198, 255, 0.1);
+        }
+
+        .primary-gradient-btn {
+            background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-container'));
+            box-shadow: 0 4px 15px rgba(75, 142, 255, 0.3),
+                        inset 1px 1px 2px rgba(255,255,255,0.4);
+            color: theme('colors.on-primary-container');
+        }
+        
+        .primary-gradient-btn:active {
+            box-shadow: inset 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .display-text {
+            font-size: 3.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            font-weight: 300;
+        }
+
+        .ambient-glow {
+            box-shadow: 0 0 40px rgba(173, 198, 255, 0.06);
+        }
+      </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- SideNavBar -->
+<nav class="fixed inset-y-0 left-0 z-50 flex flex-col p-6 h-screen w-64 border-r border-[#2A2A2A]/50 bg-[#131313]/80 backdrop-blur-xl shadow-[4px_0_24px_rgba(0,0,0,0.5)] hidden md:flex">
+<div class="flex items-center gap-3 mb-10">
+<div class="h-10 w-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">developer_board</span>
+</div>
+<div>
+<h1 class="text-xl font-bold italic text-[#ADC6FF] leading-tight">YAET</h1>
+<p class="text-xs text-on-surface-variant">Electronics Tools</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2 font-['Inter'] font-medium text-sm tracking-tight">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+                Op-Amp
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined">speaker_group</span>
+                Power Amp
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined">electric_bolt</span>
+                Power Electronics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#ADC6FF] bg-[#2A2A2A] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.4),inset_-2px_-2px_4px_rgba(255,255,255,0.05)] hover:bg-[#1C1B1B] scale-[0.97] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">memory</span>
+                Semiconductors
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined">rebase_edit</span>
+                Transistors
+            </a>
+</div>
+<div class="mt-auto flex flex-col gap-2 font-['Inter'] font-medium text-sm tracking-tight border-t border-surface-container-high pt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined">history</span>
+                History
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-gray-200 transition-colors hover:bg-[#1C1B1B]" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 md:left-64 flex justify-between items-center px-8 z-40 bg-[#131313]/40 backdrop-blur-md docked full-width h-16 flat no-line architecture">
+<div class="flex items-center gap-4 text-[#ADC6FF] Headline: text-2xl font-semibold tracking-tighter. Label: text-xs uppercase">
+<span class="text-lg font-black tracking-widest text-white hidden md:block">Yet Another Electronics Tools</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-gray-500 hover:text-white transition-opacity">
+<span class="material-symbols-outlined">calculate</span>
+</button>
+<button class="text-gray-500 hover:text-white transition-opacity">
+<span class="material-symbols-outlined">print</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full pt-24 pb-12 px-6 md:px-12 md:ml-64 flex flex-col gap-12">
+<!-- Result Display Area -->
+<section class="flex justify-end items-end w-full min-h-[120px] mb-8">
+<div class="text-right">
+<p class="text-surface-variant text-sm font-medium tracking-widest mb-2 uppercase">Drain Current (I_D)</p>
+<div class="display-text text-primary font-light">
+                    12.45 <span class="text-2xl text-on-surface-variant ml-2">mA</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Controls -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Transistor Type & Parameters (Spans 7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-8">
+<!-- Mode Selector -->
+<div class="glass-panel p-6 rounded-2xl ambient-glow flex flex-col gap-4">
+<h2 class="text-xl font-semibold text-on-surface mb-2 tracking-tight">Transistor Model</h2>
+<div class="flex flex-wrap gap-4">
+<button class="neumorphic-button active px-6 py-3 rounded-full text-primary font-medium text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">memory</span>
+                            JFET / MOSFET
+                        </button>
+<button class="neumorphic-button px-6 py-3 rounded-full text-on-surface-variant font-medium text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">timeline</span>
+                            Diode Model
+                        </button>
+<button class="neumorphic-button px-6 py-3 rounded-full text-on-surface-variant font-medium text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">waves</span>
+                            Rectifiers
+                        </button>
+</div>
+</div>
+<!-- Input Wells -->
+<div class="bg-surface-container-low p-8 rounded-3xl flex flex-col gap-6">
+<h3 class="text-lg font-medium text-on-surface mb-2">Parameters</h3>
+<!-- IDSS Input -->
+<div class="flex flex-col gap-2">
+<label class="text-xs text-outline font-medium tracking-wide uppercase">Saturation Current (I_DSS)</label>
+<div class="relative flex items-center">
+<input class="neumorphic-input w-full h-14 rounded-xl px-4 text-lg font-mono tracking-wider focus:ring-0" type="text" value="10"/>
+<span class="absolute right-4 text-on-surface-variant font-mono text-sm">mA</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- VGS Input -->
+<div class="flex flex-col gap-2">
+<label class="text-xs text-outline font-medium tracking-wide uppercase">Gate-Source Volts (V_GS)</label>
+<div class="relative flex items-center">
+<input class="neumorphic-input w-full h-14 rounded-xl px-4 text-lg font-mono tracking-wider focus:ring-0" type="text" value="-2"/>
+<span class="absolute right-4 text-on-surface-variant font-mono text-sm">V</span>
+</div>
+</div>
+<!-- VGS(off) Input -->
+<div class="flex flex-col gap-2">
+<label class="text-xs text-outline font-medium tracking-wide uppercase">Pinch-off Volts (V_GS(off))</label>
+<div class="relative flex items-center">
+<input class="neumorphic-input w-full h-14 rounded-xl px-4 text-lg font-mono tracking-wider focus:ring-0" type="text" value="-8"/>
+<span class="absolute right-4 text-on-surface-variant font-mono text-sm">V</span>
+</div>
+</div>
+</div>
+<div class="mt-4 flex justify-end">
+<button class="primary-gradient-btn px-8 py-4 rounded-xl font-bold tracking-wide flex items-center gap-2">
+<span class="material-symbols-outlined">functions</span>
+                            COMPUTE
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Numpad & Formula (Spans 5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<!-- Formula Reference -->
+<div class="glass-panel p-6 rounded-2xl flex flex-col items-center justify-center min-h-[140px] text-center">
+<p class="text-xs text-outline font-medium uppercase mb-3">Shockley's Equation</p>
+<div class="text-on-surface font-mono text-lg flex items-center gap-2 bg-surface p-3 rounded-lg border border-surface-container-highest">
+                         I<sub class="text-xs">D</sub> = I<sub class="text-xs">DSS</sub> <span class="text-surface-variant mx-1">×</span> (1 - V<sub class="text-xs">GS</sub> / V<sub class="text-xs">P</sub>)²
+                     </div>
+</div>
+<!-- Soft Keypad -->
+<div class="bg-surface-container-low p-6 rounded-3xl grid grid-cols-4 gap-4 flex-1">
+<!-- Row 1 -->
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">7</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">8</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">9</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface-variant bg-surface-container-highest">
+<span class="material-symbols-outlined text-sm">backspace</span>
+</button>
+<!-- Row 2 -->
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">4</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">5</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">6</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-primary bg-secondary-container">EXP</button>
+<!-- Row 3 -->
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">1</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">2</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">3</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-primary bg-secondary-container">(-)</button>
+<!-- Row 4 -->
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">0</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface">.</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-on-surface-variant bg-surface-container-highest">C</button>
+<button class="neumorphic-button h-14 rounded-xl font-mono text-lg text-primary bg-secondary-container">
+<span class="material-symbols-outlined">keyboard_return</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
