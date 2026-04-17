@@ -1,6 +1,6 @@
 # Yet Another Electronics Tools (YAET)
 
-Yet Another Electronics Tools (YAET) adalah aplikasi desktop yang dirancang untuk membantu mahasiswa dan praktisi elektronika dalam melakukan berbagai perhitungan rumus dengan cepat dan akurat. Aplikasi ini mengedepankan aspek estetika antarmuka dengan menggabungkan konsep Liquid Glassmorphism dan Neumorphism untuk memberikan pengalaman pengguna yang nyaman dan taktil.
+Yet Another Electronics Tools (YAET) adalah aplikasi desktop yang dirancang untuk membantu mahasiswa dan praktisi elektronika dalam melakukan berbagai perhitungan rumus dengan cepat dan akurat. Aplikasi ini mengedepankan aspek estetika antarmuka dengan menggabungkan konsep Liquid Glassmorphism dan Neumorphism untuk memberikan user experience yang nyaman.
 
 ## Fitur Utama
 
